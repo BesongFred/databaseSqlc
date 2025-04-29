@@ -37,6 +37,7 @@ func (h *MessageHandler) WireHttpHandler() http.Handler {
 	r.PATCH("/message", h.handleUpdateMessage)
 	r.POST("/threads", h.handleCreateThread)
 	r.POST("/order", h.handleCreateOrder)
+	r.POST("/order", h.handleCreateOrder)
 
 	return r
 }
