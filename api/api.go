@@ -206,5 +206,6 @@ func (h *MessageHandler) handleUpdateMessage(c *gin.Context) {
 		return
 	}
 
+
 	c.JSON(http.StatusOK, gin.H{"success": "Message updated successfully"})
 }
