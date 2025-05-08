@@ -45,7 +45,7 @@ jobs:
           go-version: '1.22'
 
       - name: Run govulncheck
-        run: govulncheck ./...
+        run: golang/govulncheck-action@v1
 
   build:
     name: Build Binary
