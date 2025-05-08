@@ -39,10 +39,10 @@ jobs:
         run: go install golang.org/x/vuln/cmd/govulncheck@latest
 
       - name: Preload module dependencies
-        run: go list -deps ./... > /dev/null
+        run: go mod download
 
       - name: Run govulncheck
-        run: govulncheck -mode=source ./...
+        run: govulncheck ./...
 
   build:
     name: Build Binary
@@ -76,4 +76,4 @@ jobs:
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v8
         with:
-          version: v2.1
+          version: v2.1.0
