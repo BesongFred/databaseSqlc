@@ -41,7 +41,7 @@ func (h *MessageHandler) WireHttpHandler() http.Handler {
 
 	return r
 }
-
+//this function creates an order
 func (h *MessageHandler) handleCreateOrder(c *gin.Context) {
 	var req repo.CreateOrderParams
 	err := c.ShouldBindBodyWithJSON(&req);
