@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -46,7 +47,12 @@ func requestPayment(phone, amount, description, apiKey string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	defer resp.Body.Close()
+	// defer resp.Body.Close()
+	defer func() {
+		if err := resp.Body.Close(); err != nil {
+			log.Println("Error closing response body:", err)
+		}
+	}()
 
 	var paymentResp paymentResponse
 	if err := json.NewDecoder(resp.Body).Decode(&paymentResp); err != nil {

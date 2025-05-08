@@ -44,7 +44,8 @@ func (h *MessageHandler) WireHttpHandler() http.Handler {
 
 func (h *MessageHandler) handleCreateOrder(c *gin.Context) {
 	var req repo.CreateOrderParams
-	if err := c.ShouldBindBodyWithJSON(&req); err != nil {
+	err := c.ShouldBindBodyWithJSON(&req);
+	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
